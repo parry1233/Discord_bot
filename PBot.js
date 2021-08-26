@@ -12,6 +12,8 @@ const google = new img({
 })
 const client = new Client();
 
+let quizQueue = [];
+
 // 建立一個類別來管理 Property 及 Method
 class PBot {
 
@@ -326,6 +328,73 @@ class PBot {
             msg.channel.send({files:["output_wordcloud.png"]});
         });
     }
+
+    async Quiz(msg){
+        var fs=require('fs');
+        var file="AnimeQ.json";
+        fs.readFile(file,'utf-8',function(err,data){
+            let quizData = JSON.parse(data)
+            //console.log(quizData);
+
+            var output = quizQueue.filter(function(value){ return value.username===msg.author.username;});
+    
+            if(output[0]!==undefined)
+            {
+                let userQuiz = quizData[output[0].index];
+                msg.channel.send(
+                    `${msg.author.username} 你好, 這是你的問題:\n`+
+                    `原始出處: ${userQuiz.Original}\n`+
+                    `性別: ${userQuiz.Gender}\n`+
+                    `類別: ${userQuiz.Type}\n`+
+                    `角色特色: ${userQuiz.feature}\n`+
+                    `其他提示: ${userQuiz.other_tip.join(', ')}`
+                );
+            }
+            else
+            {
+                let index = Math.floor(Math.random()*quizData.length);
+                quizQueue.push({"username":msg.author.username,"index":index});
+                msg.channel.send(`${msg.author.username} 初始化題目完成，請在執行一次`);
+                console.log(quizQueue);
+            }
+        });
+    }
+
+    async QuizAnswer(msg)
+    {
+        const answer = msg.content.replace(`${prefix}ans`, '').trim();
+        console.log(answer);
+        var fs=require('fs');
+        var file="AnimeQ.json";
+        fs.readFile(file,'utf-8',function(err,data){
+            let quizData = JSON.parse(data)
+            var output = quizQueue.filter(function(value){ return value.username===msg.author.username;});
+    
+            if(output[0]!==undefined)
+            {
+                let userAnswer = quizData[output[0].index].Name;
+                if(answer === userAnswer)
+                {
+                    quizQueue = quizQueue.filter(function(value){ return value.username !== msg.author.username; });
+                    msg.channel.send(`${msg.author.username}  恭喜你答對了!答案是: `+answer+` (清除題目完畢，現在可以重新申請題目)`);
+                }
+                else
+                {
+                    msg.channel.send(`${msg.author.username} 答錯了QQ`);
+                }
+            }
+            else
+            {
+                msg.channel.send(`${msg.author.username} 尚未有題目!請先向PBOT申請題目!`);
+            }
+        });
+    }
+
+    async clearQuiz(msg)
+    {
+        quizQueue = quizQueue.filter(function(value){ return value.username !== msg.author.username; });
+        msg.channel.send(`${msg.author.username} 清除答案完畢，現在可以重新申請題目。`);
+    }
 }
 
 // run class Music
@@ -444,6 +513,21 @@ client.on('message', async (msg) => {
         await pbot.wordCloud(msg);
     }
 
+    if (msg.content === `${prefix}quiz`) {
+        // 動漫猜題--問題目
+        await pbot.Quiz(msg);
+    }
+
+    if (msg.content.indexOf(`${prefix}ans`) > -1) {
+        //動漫猜題--猜答案
+        await pbot.QuizAnswer(msg);
+    }
+
+    if (msg.content.indexOf(`${prefix}clearQuiz`) > -1) {
+        //動漫猜題--猜答案
+        await pbot.clearQuiz(msg);
+    }
+
     // !!user guide
     if (msg.content === `${prefix}help`){
         msg.reply('\n`join`: BOT加入伺服器\n'+
@@ -458,7 +542,10 @@ client.on('message', async (msg) => {
         '`img {搜尋標籤 (用空白隔開)}`: Google搜尋圖片(目前設定為一次最相關3張)\n'+
         '`google {搜尋內容}`: Google搜尋(目前設定為一次最相關5則)\n'+
         '`key {文章內文}`: 使用TF/IDF(文本/逆文本分析)進行文章分析，找出關鍵字(目前設定為分析數值最重要之10個字詞)\n'+
-        '`cloud {PTT文章內文}`: 製作PTT文章之留言文字雲圖像\n'
+        '`cloud {PTT文章內文}`: 製作PTT文章之留言文字雲圖像\n'+
+        '`quiz`: 動漫猜題初始話與繼續\n'+
+        '`ans {猜答案}`: 動漫猜題猜答案\n'+
+        '`clearQuiz`: 清除你的動漫猜題\n'
         );
     }
 });
