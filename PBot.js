@@ -382,7 +382,7 @@ class PBot {
                 }
                 else
                 {
-                    msg.channel.send(`${msg.author.username} 答錯了餒，再試一次? 或輸入「endquiz」結束題目。`);
+                    msg.channel.send(`${msg.author.username} 答錯了餒，再試一次? 或輸入「end_quiz」結束題目。`);
                 }
             }
             else
