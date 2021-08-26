@@ -542,7 +542,7 @@ client.on('message', async (msg) => {
     }
 
     if (msg.content.indexOf(`${prefix}end_quiz`) > -1) {
-        //動漫猜題--猜答案
+        //動漫猜題--結束問題
         await pbot.clearQuiz(msg);
     }
 
