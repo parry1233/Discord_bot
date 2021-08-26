@@ -337,26 +337,85 @@ class PBot {
             //console.log(quizData);
 
             var output = quizQueue.filter(function(value){ return value.username===msg.author.username;});
+            //console.log(output);
     
             if(output[0]!==undefined)
             {
                 let userQuiz = quizData[output[0].index];
-                msg.channel.send(
-                    `${msg.author.username} 你好, 這是你的題目:\n`+
-                    `原始出處: ${userQuiz.Original}\n`+
-                    `性別: ${userQuiz.Gender}\n`+
-                    `類別: ${userQuiz.Type}\n`+
-                    `角色特色: ${userQuiz.feature}\n`+
-                    `其他提示: ${userQuiz.other_tip.join(', ')}\n`+
-                    `(注意猜題時若為英文名請全數輸入小寫英文字母)`
-                );
+                switch(output[0].round+1)
+                {
+                    case 1:
+                        msg.reply(
+                            `[第 ${output[0].round+1}輪]\n`+
+                            `提示如下~\n`+
+                            `原始出處: ${userQuiz.Original}`
+                        );
+                        quizQueue[quizQueue.indexOf(output[0])].round += 1;
+                        break;
+                    case 2:
+                        msg.reply(
+                            `[第 ${output[0].round+1}輪]\n`+
+                            `提示如下~\n`+
+                            `原始出處: ${userQuiz.Original}\n`+
+                            `性別: ${userQuiz.Gender}\n`
+                        );
+                        quizQueue[quizQueue.indexOf(output[0])].round += 1;
+                        break;
+                    case 3:
+                        msg.reply(
+                            `[第 ${output[0].round+1}輪]\n`+
+                            `提示如下~\n`+
+                            `原始出處: ${userQuiz.Original}\n`+
+                            `性別: ${userQuiz.Gender}\n`+
+                            `類別: ${userQuiz.Type}\n`
+                        );
+                        quizQueue[quizQueue.indexOf(output[0])].round += 1;
+                        break;
+                    case 4:
+                        msg.reply(
+                            `[第 ${output[0].round+1}輪]\n`+
+                            `提示如下~\n`+
+                            `原始出處: ${userQuiz.Original}\n`+
+                            `性別: ${userQuiz.Gender}\n`+
+                            `類別: ${userQuiz.Type}\n`+
+                            `角色特色: ${userQuiz.feature}\n`
+                        );
+                        quizQueue[quizQueue.indexOf(output[0])].round += 1;
+                        break;
+                    case 5:
+                        msg.reply(
+                            `[第 ${output[0].round+1}輪]\n`+
+                            `提示如下~\n`+
+                            `原始出處: ${userQuiz.Original}\n`+
+                            `性別: ${userQuiz.Gender}\n`+
+                            `類別: ${userQuiz.Type}\n`+
+                            `角色特色: ${userQuiz.feature}\n`+
+                            `提示: ${userQuiz.other_tip[0]}\n`+
+                            `(注意若為英文名請全數輸入小寫英文字母)`
+                        );
+                        quizQueue[quizQueue.indexOf(output[0])].round += 1;
+                        break;
+                    default:
+                        msg.reply(
+                            `[第 ${output[0].round+1}輪]\n`+
+                            `提示如下~\n`+
+                            `原始出處: ${userQuiz.Original}\n`+
+                            `性別: ${userQuiz.Gender}\n`+
+                            `類別: ${userQuiz.Type}\n`+
+                            `角色特色: ${userQuiz.feature}\n`+
+                            `所有提示: ${userQuiz.other_tip.join(', ')}\n`+
+                            `(注意若為英文名請全數輸入小寫英文字母)`
+                        );
+                        quizQueue[quizQueue.indexOf(output[0])].round += 1;
+                        break;
+                }
             }
             else
             {
                 let index = Math.floor(Math.random()*quizData.length);
-                quizQueue.push({"username":msg.author.username,"index":index});
+                quizQueue.push({"username":msg.author.username,"index":index, "round":0});
                 msg.channel.send(`${msg.author.username} 初始化題目完成，請在執行一次`);
-                console.log(quizQueue);
+                //console.log(quizQueue);
             }
         });
     }
@@ -364,7 +423,7 @@ class PBot {
     async QuizAnswer(msg)
     {
         const answer = msg.content.replace(`${prefix}ans`, '').trim();
-        console.log(answer);
+        //console.log(answer);
         var fs=require('fs');
         var file="AnimeQ.json";
         fs.readFile(file,'utf-8',function(err,data){
@@ -377,17 +436,18 @@ class PBot {
                 if(answer === userAnswer)
                 {
                     quizQueue = quizQueue.filter(function(value){ return value.username !== msg.author.username; });
-                    msg.channel.send(`${msg.author.username}  恭喜你答對了!答案是: ${userAnswer}\n(清除題目完畢，現在可以重新申請題目)`);
-                    console.log('RightAnswer '+quizQueue);
+                    msg.reply(` 恭喜你答對了!答案是: ${userAnswer}\n(清除題目完畢，現在可以重新申請題目)`);
+                    msg.channel.send(quizData[output[0].index].img);
+                    //console.log('RightAnswer '+quizQueue);
                 }
                 else
                 {
-                    msg.channel.send(`${msg.author.username} 答錯了餒，再試一次? 或輸入「end_quiz」結束題目。`);
+                    msg.reply(`答錯了餒，再試一次? 或輸入「end_quiz」結束題目。`);
                 }
             }
             else
             {
-                msg.channel.send(`${msg.author.username} 尚未有題目!請先向PBOT申請題目!`);
+                msg.reply(`尚未有題目!請先向PBOT申請題目!`);
             }
         });
     }
@@ -404,12 +464,12 @@ class PBot {
             {
                 let userAnswer = quizData[output[0].index].Name;
                 quizQueue = quizQueue.filter(function(value){ return value.username !== msg.author.username; });
-                msg.channel.send(`${msg.author.username} 你目前的答案是: ${userAnswer}。清除題目完畢，現在可以重新申請題目`);
-                console.log('clearQuiz '+quizQueue);
+                msg.reply(` 你目前的答案是: ${userAnswer}。清除題目完畢，現在可以重新申請題目`);
+                //console.log('clearQuiz '+quizQueue);
             }
             else
             {
-                msg.channel.send(`${msg.author.username} 尚未有題目!不用清除現有題目`);
+                msg.reply(` 尚未有題目!不用清除現有題目`);
             }
         });
     }
