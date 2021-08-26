@@ -342,12 +342,13 @@ class PBot {
             {
                 let userQuiz = quizData[output[0].index];
                 msg.channel.send(
-                    `${msg.author.username} 你好, 這是你的問題:\n`+
+                    `${msg.author.username} 你好, 這是你的題目:\n`+
                     `原始出處: ${userQuiz.Original}\n`+
                     `性別: ${userQuiz.Gender}\n`+
                     `類別: ${userQuiz.Type}\n`+
                     `角色特色: ${userQuiz.feature}\n`+
-                    `其他提示: ${userQuiz.other_tip.join(', ')}`
+                    `其他提示: ${userQuiz.other_tip.join(', ')}\n`+
+                    `(注意猜題時若為英文名請全數輸入小寫英文字母)`
                 );
             }
             else
@@ -376,11 +377,12 @@ class PBot {
                 if(answer === userAnswer)
                 {
                     quizQueue = quizQueue.filter(function(value){ return value.username !== msg.author.username; });
-                    msg.channel.send(`${msg.author.username}  恭喜你答對了!答案是: `+answer+` (清除題目完畢，現在可以重新申請題目)`);
+                    msg.channel.send(`${msg.author.username}  恭喜你答對了!答案是: ${userAnswer}\n(清除題目完畢，現在可以重新申請題目)`);
+                    console.log('RightAnswer '+quizQueue);
                 }
                 else
                 {
-                    msg.channel.send(`${msg.author.username} 答錯了QQ`);
+                    msg.channel.send(`${msg.author.username} 答錯了餒，再試一次? 或輸入「endquiz」結束題目。`);
                 }
             }
             else
@@ -392,8 +394,24 @@ class PBot {
 
     async clearQuiz(msg)
     {
-        quizQueue = quizQueue.filter(function(value){ return value.username !== msg.author.username; });
-        msg.channel.send(`${msg.author.username} 清除答案完畢，現在可以重新申請題目。`);
+        var fs=require('fs');
+        var file="AnimeQ.json";
+        fs.readFile(file,'utf-8',function(err,data){
+            let quizData = JSON.parse(data)
+            var output = quizQueue.filter(function(value){ return value.username===msg.author.username;});
+    
+            if(output[0]!==undefined)
+            {
+                let userAnswer = quizData[output[0].index].Name;
+                quizQueue = quizQueue.filter(function(value){ return value.username !== msg.author.username; });
+                msg.channel.send(`${msg.author.username} 你目前的答案是: ${userAnswer}。清除題目完畢，現在可以重新申請題目`);
+                console.log('clearQuiz '+quizQueue);
+            }
+            else
+            {
+                msg.channel.send(`${msg.author.username} 尚未有題目!不用清除現有題目`);
+            }
+        });
     }
 }
 
@@ -523,7 +541,7 @@ client.on('message', async (msg) => {
         await pbot.QuizAnswer(msg);
     }
 
-    if (msg.content.indexOf(`${prefix}clearQuiz`) > -1) {
+    if (msg.content.indexOf(`${prefix}end_quiz`) > -1) {
         //動漫猜題--猜答案
         await pbot.clearQuiz(msg);
     }
@@ -545,7 +563,7 @@ client.on('message', async (msg) => {
         '`cloud {PTT文章內文}`: 製作PTT文章之留言文字雲圖像\n'+
         '`quiz`: 動漫猜題初始話與繼續\n'+
         '`ans {猜答案}`: 動漫猜題猜答案\n'+
-        '`clearQuiz`: 清除你的動漫猜題\n'
+        '`end_quiz`: 清除你的動漫猜題\n'
         );
     }
 });

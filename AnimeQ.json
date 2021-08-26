@@ -1,6 +1,24 @@
 [
-    {"Name":"翔鶴","Original":"Game","Gender":"Female","Type":"戰鬥番","feature":"御姐","other_tip":["艦娘","五航戰"]},
-    {"Name":"瑞鶴","Original":"Game","Gender":"Female","Type":"戰鬥番","feature":"妹妹","other_tip":["艦娘","五航戰"]},
-    {"Name":"一條樂","Original":"Manga","Gender":"Male","Type":"日常番","feature":"渣男","other_tip":["鑰匙","黑道"]},
-    {"Name":"Vivy","Original":"Anime","Gender":"Female","Type":"戰鬥番","feature":"AI","other_tip":["歌姬","新番"]}
+    {"Name":"翔鶴","Original":"遊戲","Gender":"女","Type":"戰鬥","feature":"御姐","other_tip":["艦娘","五航戰"]},
+    {"Name":"瑞鶴","Original":"遊戲","Gender":"女","Type":"戰鬥","feature":"妹妹","other_tip":["艦娘","五航戰"]},
+    {"Name":"一條樂","Original":"漫畫","Gender":"男","Type":"日常","feature":"渣男","other_tip":["鑰匙","黑道"]},
+    {"Name":"vivy","Original":"動畫","Gender":"男","Type":"戰鬥","feature":"AI","other_tip":["歌姬","新番"]},
+    {"Name":"探路者","Original":"遊戲","Gender":"無性別","Type":"戰鬥","feature":"AI","other_tip":["真馬文","friends"]},
+    {"Name":"生命線","Original":"遊戲","Gender":"女","Type":"戰鬥","feature":"戰地醫生","other_tip":["Last one down and boom boom","你可以拉要講幾次"]},
+    {"Name":"辛皖","Original":"遊戲","Gender":"男","Type":"戰鬥","feature":"瘋子","other_tip":["就你在衝","丟包隊友一流","預告片總是倒"]},
+    {"Name":"席爾","Original":"遊戲","Gender":"男","Type":"戰鬥","feature":"唇環","other_tip":["你再拉鳳凰阿","現在就有點垃圾角"]},
+    {"Name":"暗碼士","Original":"遊戲","Gender":"男","Type":"戰鬥","feature":"隱姓埋名","other_tip":["配件比本人有用","手插口袋不跌倒:平衡感大師"]},
+    {"Name":"腐蝕","Original":"遊戲","Gender":"男","Type":"戰鬥","feature":"醫生","other_tip":["臭氣臭死人"]},
+    {"Name":"直布羅陀","Original":"遊戲","Gender":"男","Type":"戰鬥","feature":"盾之勇者","other_tip":["大家都是我bratha","HAHAHA"]},
+    {"Name":"幻象","Original":"遊戲","Gender":"男","Type":"戰鬥","feature":"騙子","other_tip":["北部粽","屁話有點多","曾經有艘船"]},
+    {"Name":"亡靈","Original":"遊戲","Gender":"無性別","Type":"戰鬥","feature":"蟑螂","other_tip":["殺死一個我還有千千萬萬個我"]},
+    {"Name":"轟哥","Original":"遊戲","Gender":"男","Type":"戰鬥","feature":"炸彈客","other_tip":["老子就是手雷塞滿"]},
+    {"Name":"華森","Original":"遊戲","Gender":"女","Type":"戰鬥","feature":"電流","other_tip":["Nessy","法文口音","你再從繩索上來阿","日文語音拉血騷包"]},
+    {"Name":"惡靈","Original":"遊戲","Gender":"女","Type":"戰鬥","feature":"虛空","other_tip":["Q走","我就一直揍你兩拳到你跳game","苦無"]},
+    {"Name":"天際線","Original":"遊戲","Gender":"女","Type":"戰鬥","feature":"天梯","other_tip":["哎呀!小壞蛋","大媽"]},
+    {"Name":"羅芭","Original":"遊戲","Gender":"女","Type":"戰鬥","feature":"盜賊","other_tip":["寶藏庫訪問者","不缺子彈啦"]},
+    {"Name":"蘭帕特","Original":"遊戲","Gender":"女","Type":"戰鬥","feature":"武器商人","other_tip":["席拉"]},
+    {"Name":"瓦爾基里","Original":"遊戲","Gender":"女","Type":"戰鬥","feature":"飛行員","other_tip":["跑圈航班"]},
+    {"Name":"尋血犬","Original":"遊戲","Gender":"無性別","Type":"戰鬥","feature":"貌似不是一個人","other_tip":["狗","GodFather"]},
+    {"Name":"黃前久美子","Original":"動畫","Gender":"女","Type":"日常","feature":"樂器","other_tip":["上低音號","表裡不一","算短髮"]}
 ]
