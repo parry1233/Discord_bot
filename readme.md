@@ -4,16 +4,16 @@ discord bot with multiple function, create by perryChung
 ### Install package
 1. For Node_modules, command `npm i` to install specific packages.
 2. For Python packages:
-- `pip install requests`
-- `pip install pandas`
-- `pip install jieba`
-- `pip install numpy`
-- `pip install matplotlib.pyplot`
-- `pip install wordcloud`
-- `pip install PIL`
-- `pip install bs4`
-- `pip install sys`
-- note that current python environment is running on local at `C:/ProgramData/Anaconda3/python.exe`,
+ - `pip install requests`
+ - `pip install pandas`
+ - `pip install jieba`
+ - `pip install numpy`
+ - `pip install matplotlib.pyplot`
+ - `pip install wordcloud`
+ - `pip install PIL`
+ - `pip install bs4`
+ - `pip install sys`
+ - note that current python environment is running on local at `C:/ProgramData/Anaconda3/python.exe`,
 
 ### Start the BOT server
 command `node PBot` to start the bot server.
