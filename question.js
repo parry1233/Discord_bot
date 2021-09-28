@@ -1,10 +1,13 @@
 let quizQueue = [];
+let quizfile = "AnimeQ.json";
+const fs = require('fs')
+//let quizData = JSON.parse(fs.readFileSync(quizfile,'utf-8'));
 
 function Quiz(username)
 {
-    var fs=require('fs');
-    var file="AnimeQ.json";
-    fs.readFile(file,'utf-8',function(err,data){
+    //var quizfile = "AnimeQ.json";
+    //var fs = require('fs');
+    fs.readFile(quizfile,'utf-8',function(err,data){
         let quizData = JSON.parse(data)
         //console.log(quizData);
 
@@ -25,20 +28,20 @@ function Quiz(username)
         else
         {
             console.log(`${username} Add to QuizQueue`);
-            console.log(quizQueue);
             let index = Math.floor(Math.random()*quizData.length);
             quizQueue.push({"username":username,"index":index});
+            console.log(quizQueue);
             Quiz(username);
         }
-    })
+    });
 }
 
 function Answer(username,answer)
 {
-    console.log(quizQueue);
-    var fs=require('fs');
-    var file="AnimeQ.json";
-    fs.readFile(file,'utf-8',function(err,data){
+    //var quizfile = "AnimeQ.json";
+    //var fs = require('fs');
+    //console.log(quizQueue);
+    fs.readFile(quizfile,'utf-8',function(err,data){
         let quizData = JSON.parse(data)
         var output = quizQueue.filter(function(value){ return value.username===username;});
     
@@ -61,7 +64,7 @@ function Answer(username,answer)
         {
             console.log(`用戶 ${username} 尚未有題目!請先向PBOT申請題目!`);
         }
-    })
+    });
 }
 
 Quiz("parry1233");
