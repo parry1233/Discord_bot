@@ -2,7 +2,7 @@
     {"Name":"翔鶴","Original":"遊戲","Gender":"女","Type":"戰鬥","feature":"御姐","other_tip":["艦娘","五航戰"],"img":"https://static.wikia.nocookie.net/kancolle/images/8/8f/Imgbig_1_02728261.png/revision/latest?cb=20150113010224&path-prefix=zh"},
     {"Name":"瑞鶴","Original":"遊戲","Gender":"女","Type":"戰鬥","feature":"妹妹","other_tip":["艦娘","五航戰"],"img":"https://static.wikia.nocookie.net/kancolle/images/2/2e/Imgbig_1_50494623.png/revision/latest?cb=20150113010647&path-prefix=zh"},
     {"Name":"一條樂","Original":"漫畫","Gender":"男","Type":"日常","feature":"渣男","other_tip":["鑰匙","黑道"],"img":"https://i.imgur.com/WbTUZLV.jpg"},
-    {"Name":"vivy","Original":"動畫","Gender":"男","Type":"戰鬥","feature":"AI","other_tip":["歌姬","新番"],"img":"https://i-ogp.pximg.net/imgaz/upload/20210803/815320644.jpg"},
+    {"Name":"vivy","Original":"動畫","Gender":"女","Type":"戰鬥","feature":"AI","other_tip":["歌姬","新番"],"img":"https://i-ogp.pximg.net/imgaz/upload/20210803/815320644.jpg"},
     {"Name":"探路者","Original":"遊戲","Gender":"無性別","Type":"戰鬥","feature":"AI","other_tip":["真馬文","friends"],"img":""},
     {"Name":"生命線","Original":"遊戲","Gender":"女","Type":"戰鬥","feature":"戰地醫生","other_tip":["Last one down and boom boom","你可以拉要講幾次"],"img":"https://i.imgur.com/OSVP3Yr.jpg"},
     {"Name":"辛烷","Original":"遊戲","Gender":"男","Type":"戰鬥","feature":"瘋子","other_tip":["就你在衝","丟包隊友一流","預告片總是倒"],"img":"https://post.more-gamer.com/wp-content/uploads/2020/08/%E3%82%AA%E3%82%AF%E3%82%BF%E3%83%B3.jpg"},
@@ -21,6 +21,5 @@
     {"Name":"瓦爾基里","Original":"遊戲","Gender":"女","Type":"戰鬥","feature":"飛行員","other_tip":["跑圈航班"],"img":"https://i.pinimg.com/originals/52/18/9e/52189e215a01ace0a6745fae666da574.png"},
     {"Name":"尋血犬","Original":"遊戲","Gender":"無性別","Type":"戰鬥","feature":"貌似不是一個人","other_tip":["狗","GodFather"],"img":"https://i.imgur.com/Fk42rJI.jpg"},
     {"Name":"黃前久美子","Original":"動畫","Gender":"女","Type":"日常","feature":"上低音號","other_tip":["黃大叔","表裡不一","算短髮"],"img":"https://img.moegirl.org.cn/common/thumb/3/33/67.kumiko.oumae-portrait.jpg/280px-67.kumiko.oumae-portrait.jpg"},
-    {"Name":"高坂麗奈","Original":"動畫","Gender":"女","Type":"日常","feature":"小號","other_tip":["黑髮","反差萌","冰美人"],"img":"https://img.moegirl.org.cn/common/thumb/5/5f/41.reina.kousaka-portrait.jpg/280px-41.reina.kousaka-portrait.jpg"},
-    {"Name":"黃前久美子","Original":"動畫","Gender":"女","Type":"日常","feature":"上低音號","other_tip":["黃大叔","表裡不一","算短髮"],"img":"https://img.moegirl.org.cn/common/thumb/3/33/67.kumiko.oumae-portrait.jpg/280px-67.kumiko.oumae-portrait.jpg"}
+    {"Name":"高坂麗奈","Original":"動畫","Gender":"女","Type":"日常","feature":"小號","other_tip":["黑髮","反差萌","冰美人"],"img":"https://img.moegirl.org.cn/common/thumb/5/5f/41.reina.kousaka-portrait.jpg/280px-41.reina.kousaka-portrait.jpg"}
 ]
