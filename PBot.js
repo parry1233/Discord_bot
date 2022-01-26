@@ -84,6 +84,7 @@ class PBot {
 
         } catch(e) {
             console.log(e);
+            msg.channel.send(`[播放時發生了一些意外] ${e.message}`);
         }
 
     }
