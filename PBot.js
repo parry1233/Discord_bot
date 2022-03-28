@@ -84,6 +84,7 @@ class PBot {
 
         } catch(e) {
             console.log(e);
+            msg.channel.send(`ERR：${e.message}`);
         }
 
     }
@@ -94,7 +95,7 @@ class PBot {
         msg.channel.send(`播放音樂：${musicInfo.name}`);
 
         // 播放音樂
-        this.dispatcher[guildID] = this.connection[guildID].play(ytdl(musicInfo.url, { filter: 'audioonly' }));
+        this.dispatcher[guildID] = this.connection[guildID].play(ytdl(musicInfo.url, { filter: 'audioonly', quality:"highestaudio" }));
 
         // 把音量降 50%，不然第一次容易被機器人的音量嚇到 QQ
         this.dispatcher[guildID].setVolume(0.2);
