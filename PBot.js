@@ -84,11 +84,7 @@ class PBot {
 
         } catch(e) {
             console.log(e);
-<<<<<<< HEAD
             msg.channel.send(`ERR：${e.message}`);
-=======
-            msg.channel.send(`[播放時發生了一些意外] ${e.message}`);
->>>>>>> 440a78ce5196160e461c304e3a6a09ff7a85c593
         }
 
     }
