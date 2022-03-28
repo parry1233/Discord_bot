@@ -18,11 +18,7 @@
     "python-shell": "^3.0.0",
     "request": "^2.88.2",
     "ytdl": "^1.4.1",
-<<<<<<< HEAD
     "ytdl-core": "^4.11.0"
-=======
-    "ytdl-core": "^4.10.0"
->>>>>>> 440a78ce5196160e461c304e3a6a09ff7a85c593
   },
   "devDependencies": {},
   "scripts": {
